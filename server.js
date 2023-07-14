@@ -42,7 +42,7 @@ app.post('/api/causes', async (req, res) => {
 
     // Execute the SQL query to insert data into the "causes" table
     await connection.execute(
-      `INSERT INTO food (hotalid, hotal_name, foodtype) VALUES (:hotalid, :hotal_name, :foodtype)`,
+      `INSERT INTO food (hotalid, hotal_name, foodtype, address, phone, state) VALUES (:hotalid, :hotal_name, :foodtype, :address, :phone, :state)`,
       cause
     );
     await connection.commit();
@@ -69,7 +69,7 @@ app.put('/api/food/:id', async (req, res) => {
 
     // Execute the SQL query to update data in the "causes" table
     await connection.execute(
-      `UPDATE food SET hotal_name = :hotal_name, foodtype = :foodtype WHERE hotalid = :id`,
+      `UPDATE food SET hotal_name = :hotal_name, foodtype = :foodtype address = :address phone = :phone state = :sate WHERE hotalid = :id`,
       { ...cause, id }
     );
     await connection.commit();
